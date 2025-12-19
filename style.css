@@ -1,33 +1,45 @@
-/* ===== CSS Variables ===== */
+/* ===== CSS Variables (Revised for Soft and Comfortable Reading Theme) ===== */
 :root {
-  --primary-bg: #f0f6e3; /* 柔和的米綠色背景 */
-  --card-bg: #fffdf5; /* 米白卡片 */
-  --text-color: #584c42; /* 深咖啡色文字 */
-  --text-light: #8b7d70; /* 淺一點的文字 */
-  --primary-green: #5abf98; /* 主色綠 */
-  --primary-green-dark: #3a8f70;
-  --primary-blue: #55a4e8; /* 天空藍 */
-  --primary-yellow: #f9d065; /* 金黃色 */
-  --primary-red: #ff7675;
-  --border-color: #e0dacc;
-  --radius: 24px;
-  --shadow: 0 6px 0 rgba(0, 0, 0, 0.05);
+  /* 基礎色 - 更柔和的底色 */
+  --primary-bg: #fdfcf9; /* 接近純白的極淺米白 (Soft Off-White) */
+  --card-bg: #ffffff; /* 卡片使用純白 */
+  --text-color: #554d46; /* 柔和的深灰棕文字 */
+  --text-light: #9d938a; /* 淺灰棕色 (柔和的輔助文字) */
+  --border-color: #edeaea; /* 極淺邊框，幾乎看不見 */
+
+  /* 主題色 - 極低飽和的溫暖棕色調 */
+  --primary-brown: #a0816c; /* 維持棕色基調 */
+  --primary-brown-soft: #c9b4a4; /* 調整為主色調，更柔和 */
+  --primary-brown-dark: #7a6350; /* 深一點的棕色，用於陰影或按鈕點擊 */
+
+  /* 輔助色 - 收入/支出 (極低飽和度) */
+  --income-color: #7f9997; /* 柔和的青灰 (Soft Teal) */
+  --expense-color: #c48a8a; /* 柔和的紅豆沙色 (Muted Red) */
+
+  /* 特殊強調色 - 預算 (溫和的焦糖色) */
+  --budget-hero-color: #bfa58e; /* 柔和的焦糖色，取代鮮豔黃色 */
+  --budget-progress-start: #bfa58e;
+  --budget-progress-end: #a0816c;
+
+  --radius: 18px; /* 保持前一版的圓角 */
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.03); /* 陰影變得更淺 */
 }
 
-/* ===== Reset & Base ===== */
-*, *::before, *::after {
+/* ===== Reset & Base (結構保持不變) ===== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Zen Maru Gothic', 'Varela Round', sans-serif;
+  font-family: "Zen Maru Gothic", "Varela Round", sans-serif;
   background: var(--primary-bg);
-  /* 背景圖案 */
-  background-image: radial-gradient(#dcecc4 15%, transparent 16%), radial-gradient(#dcecc4 15%, transparent 16%);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
+  background-image: none; /* 移除圖案 */
+  background-size: none;
+  background-position: none;
   color: var(--text-color);
   min-height: 100vh;
   line-height: 1.6;
@@ -38,7 +50,7 @@ body {
 }
 
 .app {
-  max-width: 600px; /* 手機風格 */
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   min-height: 100vh;
@@ -59,8 +71,14 @@ body {
 }
 
 @keyframes popIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* ===== Landing Section ===== */
@@ -75,19 +93,19 @@ body {
   background: var(--card-bg);
   padding: 40px 30px;
   border-radius: 30px;
-  box-shadow: 0 10px 20px rgba(88, 76, 66, 0.1);
-  border: 4px solid white;
+  box-shadow: 0 10px 20px rgba(93, 74, 62, 0.05); /* 柔和陰影 */
+  border: 1px solid var(--border-color);
 }
 
 .app-logo {
   font-size: 3rem;
-  background: transparent;
-  color: var(--primary-green);
+  color: var(--primary-brown-soft); /* 柔和色 */
   width: 80px;
   height: 80px;
   line-height: 80px;
   border-radius: 50%;
   margin: 0 auto 20px;
+  background: none;
   box-shadow: none;
 }
 
@@ -97,17 +115,18 @@ body {
   line-height: 40px;
   font-size: 1.5rem;
   margin: 0;
+  color: var(--primary-brown-dark);
 }
 
 h1 {
-  color: var(--primary-green-dark);
+  color: var(--primary-brown-dark);
   font-size: 1.8rem;
   margin-bottom: 16px;
   line-height: 1.3;
 }
 
 .subtitle {
-  color: #8b7d70;
+  color: var(--text-light);
   margin-bottom: 32px;
   font-size: 1rem;
 }
@@ -126,7 +145,7 @@ h1 {
   width: 100%;
   max-width: 400px;
   position: relative;
-  border: 4px solid white;
+  border: 1px solid var(--border-color);
   box-shadow: var(--shadow);
 }
 
@@ -137,14 +156,14 @@ h1 {
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: var(--text-color);
+  color: var(--text-light);
   cursor: pointer;
 }
 
 .login-card h2 {
   text-align: center;
   margin: 10px 0 30px;
-  color: var(--primary-green-dark);
+  color: var(--primary-brown-dark);
 }
 
 .form-group {
@@ -155,14 +174,15 @@ h1 {
   display: block;
   margin-bottom: 8px;
   font-weight: 700;
-  color: var(--primary-green-dark);
+  color: var(--primary-brown-soft);
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid var(--border-color);
-  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
   background: #fff;
   font-family: inherit;
   font-size: 1rem;
@@ -171,8 +191,9 @@ input, select {
   transition: border-color 0.2s;
 }
 
-input:focus, select:focus {
-  border-color: var(--primary-green);
+input:focus,
+select:focus {
+  border-color: var(--primary-brown-soft);
 }
 
 /* ===== Buttons ===== */
@@ -180,7 +201,7 @@ input:focus, select:focus {
   display: inline-block;
   padding: 12px 24px;
   border: none;
-  border-radius: 50px;
+  border-radius: 12px;
   font-family: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -201,22 +222,22 @@ input:focus, select:focus {
 }
 
 .btn-primary {
-  background: var(--primary-green);
+  background: var(--primary-brown-soft); /* 柔和主色 */
   color: white;
-  box-shadow: 0 4px 0 var(--primary-green-dark);
+  box-shadow: 0 4px 0 var(--primary-brown-dark);
 }
 
 .btn-primary:active {
   transform: translateY(4px);
-  box-shadow: 0 0 0 var(--primary-green-dark);
+  box-shadow: 0 0 0 var(--primary-brown-dark);
 }
 
 .btn-secondary {
   background: transparent;
-  color: #9ca095;
-  border: 1px solid #e0dacc;
+  color: var(--text-light);
+  border: 1px solid var(--border-color);
   box-shadow: none;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .btn-secondary:hover {
@@ -226,11 +247,11 @@ input:focus, select:focus {
 
 .btn-secondary:active {
   transform: translateY(1px);
-  background: #ebebeb;
+  background: #e9e9e9;
 }
 
 .error-msg {
-  color: var(--primary-red);
+  color: var(--expense-color);
   text-align: center;
   margin-top: 10px;
   font-size: 0.9rem;
@@ -243,9 +264,10 @@ input:focus, select:focus {
   align-items: center;
   margin-bottom: 24px;
   background: var(--card-bg);
-  padding: 12px 20px;
-  border-radius: 50px;
+  padding: 10px 18px;
+  border-radius: 12px;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
 }
 
 .brand {
@@ -253,17 +275,18 @@ input:focus, select:focus {
   align-items: center;
   gap: 12px;
   font-weight: 700;
-  color: var(--primary-green-dark);
+  color: var(--primary-brown-dark);
   line-height: 1;
 }
 
 /* Summary Card */
 .bells-card {
-  background: linear-gradient(135deg, #fffdf5, #fff8dc);
+  /* 柔和的背景漸層 */
+  background: linear-gradient(135deg, #fefdfb, #f5f2ef);
   padding: 24px;
   border-radius: 28px;
-  border: 3px solid white;
-  box-shadow: 0 6px 12px rgba(249, 208, 101, 0.12);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 12px rgba(160, 129, 108, 0.05);
   margin-bottom: 24px;
   text-align: center;
 }
@@ -276,51 +299,28 @@ input:focus, select:focus {
   }
 }
 
-.bell-row {
-  margin-bottom: 24px;
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.bell-row .label {
-  display: block;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #8b7d70;
-  margin-bottom: 8px;
-  opacity: 0.8;
-}
-
-.bell-row .amount {
-  font-size: 3.2rem;
-  font-weight: 700;
-  color: var(--primary-yellow);
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 0 #e0c060;
-  font-family: 'Varela Round', sans-serif;
-}
-
 .bell-stats {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 16px;
   margin-top: 20px;
 }
 
 .stat-item {
-  background: white;
+  background: var(--card-bg);
   padding: 12px 20px;
-  border-radius: 18px;
+  border-radius: 16px;
   min-width: 120px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--border-color);
 }
 
 @media (max-width: 767px) {
   .bell-stats {
-    gap: 10px;
+    gap: 12px;
     margin-top: 16px;
   }
-  
+
   .stat-item {
     padding: 10px 16px;
     min-width: 100px;
@@ -330,12 +330,16 @@ input:focus, select:focus {
 .stat-item .label {
   font-size: 0.8rem;
   display: block;
-  color: #9ca095;
+  color: var(--text-light);
   margin-bottom: 4px;
 }
 
-.stat-item.income .amount { color: var(--primary-green); }
-.stat-item.expense .amount { color: var(--primary-red); }
+.stat-item.income .amount {
+  color: var(--income-color);
+}
+.stat-item.expense .amount {
+  color: var(--expense-color);
+}
 
 /* Action Grid */
 .action-grid {
@@ -354,8 +358,8 @@ input:focus, select:focus {
 
 .action-card {
   border: none;
-  padding: 28px 24px;
-  border-radius: 24px;
+  padding: 24px 20px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -365,26 +369,26 @@ input:focus, select:focus {
   font-family: inherit;
   font-weight: 700;
   color: var(--text-color);
-  border: 3px solid white;
+  border: 1px solid var(--border-color);
 }
 
 @media (max-width: 767px) {
   .action-card {
-    padding: 24px 20px;
+    padding: 20px 16px;
     gap: 8px;
   }
 }
 
 .action-card.income {
-  background: #e3f6f5; /* 淡藍綠 */
-  box-shadow: 0 6px 0 #b8e0de;
-  color: var(--primary-green-dark);
+  background: #eff5f4; /* 極淡的青灰色 */
+  box-shadow: 0 4px 0 #d9e0e0;
+  color: var(--income-color);
 }
 
 .action-card.expense {
-  background: #fff0f0; /* 淡粉紅 */
-  box-shadow: 0 6px 0 #ffccd2;
-  color: #d65d5d;
+  background: #f4eded; /* 極淡的紅豆沙色 */
+  box-shadow: 0 4px 0 #e0d4d4;
+  color: var(--expense-color);
 }
 
 .action-card:hover {
@@ -398,16 +402,16 @@ input:focus, select:focus {
 
 .action-card .icon {
   font-size: 2.4rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
 }
 
 /* Transaction List */
 .list-container h3 {
   font-size: 1.1rem;
   margin-bottom: 16px;
-  color: #8b7d70;
+  color: var(--primary-brown-dark);
   padding-left: 12px;
-  border-left: 6px solid var(--primary-yellow);
+  border-left: 4px solid var(--primary-brown-soft);
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -415,23 +419,24 @@ input:focus, select:focus {
 .transaction-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .transaction-item {
-  background: white;
-  padding: 16px 20px;
-  border-radius: 24px;
+  background: var(--card-bg);
+  padding: 14px 20px;
+  border-radius: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-  transition: transform 0.2s;
-  border: 2px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid transparent;
 }
 
 .transaction-item:hover {
-  transform: translateX(4px);
+  transform: translateX(0);
+  box-shadow: 0 4px 10px rgba(160, 129, 108, 0.05);
   border-color: var(--border-color);
 }
 
@@ -442,17 +447,17 @@ input:focus, select:focus {
 }
 
 .transaction-item .category-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 16px; /* 圓角矩形更現代 */
-  background: var(--primary-bg);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--primary-brown-soft);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: white;
-  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.1);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: none;
+  text-shadow: none;
 }
 
 .transaction-item .info {
@@ -469,7 +474,7 @@ input:focus, select:focus {
 
 .transaction-item .meta {
   font-size: 0.8rem;
-  color: #9ca095;
+  color: var(--text-light);
   font-weight: 500;
 }
 
@@ -482,12 +487,16 @@ input:focus, select:focus {
 .transaction-item .amount {
   font-weight: 700;
   font-size: 1.2rem;
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   letter-spacing: 0.5px;
 }
 
-.transaction-item .amount.income { color: var(--primary-green); }
-.transaction-item .amount.expense { color: var(--primary-red); }
+.transaction-item .amount.income {
+  color: var(--income-color);
+}
+.transaction-item .amount.expense {
+  color: var(--expense-color);
+}
 
 .edit-btn,
 .delete-btn {
@@ -502,27 +511,27 @@ input:focus, select:focus {
   justify-content: center;
   transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   margin-left: 8px;
-  opacity: 1; /* 手機預設顯示 */
+  opacity: 1;
   transform: scale(1);
 }
 
 .edit-btn {
-  background: #e8f5e9;
-  color: var(--primary-green-dark);
+  background: #f0f0f0;
+  color: var(--primary-brown-soft);
 }
 
 .edit-btn:hover {
-  background: var(--primary-green);
+  background: var(--primary-brown-soft);
   color: white;
 }
 
 .delete-btn {
-  background: #ffecec;
-  color: var(--primary-red);
+  background: #f0ebeb;
+  color: var(--expense-color);
 }
 
 .delete-btn:hover {
-  background: var(--primary-red);
+  background: var(--expense-color);
   color: white;
 }
 
@@ -543,20 +552,23 @@ input:focus, select:focus {
 
 /* SweetAlert Customization */
 div:where(.swal2-container) div:where(.swal2-popup) {
-  border-radius: 30px !important;
+  border-radius: 20px !important;
   background: var(--card-bg) !important;
-  border: 4px solid white !important;
-  font-family: 'Zen Maru Gothic', sans-serif !important;
+  border: 1px solid var(--border-color) !important;
+  font-family: "Zen Maru Gothic", sans-serif !important;
 }
 
 .swal-form {
   text-align: left;
 }
 
-.swal2-input, .swal2-select {
+.swal2-input,
+.swal2-select {
   width: 100% !important;
   margin: 0 0 16px !important;
   box-sizing: border-box !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
 }
 
 /* ===== Budget Section ===== */
@@ -571,7 +583,7 @@ div:where(.swal2-container) div:where(.swal2-popup) {
 }
 
 .budget-main-display:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(160, 129, 108, 0.05);
   transform: translateY(-2px);
 }
 
@@ -579,7 +591,7 @@ div:where(.swal2-container) div:where(.swal2-popup) {
   display: block;
   font-size: 1rem;
   font-weight: 700;
-  color: #8b7d70;
+  color: var(--primary-brown-soft);
   margin-bottom: 8px;
   opacity: 0.9;
 }
@@ -587,10 +599,10 @@ div:where(.swal2-container) div:where(.swal2-popup) {
 .amount-hero {
   font-size: 4rem;
   font-weight: 700;
-  color: var(--primary-green);
+  color: var(--budget-hero-color);
   letter-spacing: 0;
-  text-shadow: 2px 2px 0 rgba(90, 191, 152, 0.2);
-  font-family: 'Varela Round', sans-serif;
+  text-shadow: 2px 2px 0 rgba(160, 129, 108, 0.05);
+  font-family: "Varela Round", sans-serif;
   margin-bottom: 20px;
   line-height: 1;
   word-break: break-all;
@@ -601,34 +613,38 @@ div:where(.swal2-container) div:where(.swal2-popup) {
   justify-content: space-between;
   margin-top: 8px;
   font-size: 0.85rem;
-  color: #9ca095;
+  color: var(--text-light);
   font-weight: 500;
 }
 
 .progress-bar-bg {
   width: 100%;
-  height: 16px;
-  background-color: #e8e8e8;
-  border-radius: 12px;
+  height: 12px;
+  background-color: #e9e9e9;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
   margin-bottom: 8px;
 }
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--primary-green), #81ecec);
-  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    var(--budget-progress-start),
+    var(--budget-progress-end)
+  );
+  border-radius: 8px;
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* 預算狀態顏色 */
 .progress-bar-fill.warning {
-  background: linear-gradient(90deg, #fdcb6e, #ffeaa7);
+  background: linear-gradient(90deg, #d3b48f, #c4a07a);
 }
 
 .progress-bar-fill.danger {
-  background: linear-gradient(90deg, #ff7675, #fab1a0);
+  background: linear-gradient(90deg, #c48a8a, #ac6f6f);
 }
 
 /* 手機版調整 */
@@ -638,7 +654,7 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     margin-bottom: 20px;
     letter-spacing: -1px;
   }
-  
+
   .budget-main-display {
     padding: 8px 16px 20px;
   }

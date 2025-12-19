@@ -1,0 +1,24 @@
+{
+  // 1. 核心設定：允許按下 Tab 鍵時直接展開 Emmet 縮寫
+  "emmet.triggerExpansionOnTab": true,
+
+  // 2. 保持安靜：關閉所有打字時自動跳出的建議清單
+  "editor.quickSuggestions": {
+    "other": "off",
+    "comments": "off",
+    "strings": "off"
+  },
+
+  // 3. 關閉輸入符號（如 . 或 :）時的自動觸發
+  "editor.suggestOnTriggerCharacters": false,
+
+  // 4. 關閉灰色的 AI 行內預測文字
+  "editor.inlineSuggest.enabled": false,
+
+  // 5. 這裡建議設為 "always" 或 "inMarkupAndStylesheetFilesOnly"
+  // 雖然關閉了自動彈窗，但這能確保 Emmet 的邏輯在背景是運作的
+  "emmet.showExpandedAbbreviation": "always",
+
+  // 6. 避免 Tab 鍵被其他功能佔用（確保 Tab 優先給 Emmet）
+  "editor.tabCompletion": "on"
+}
