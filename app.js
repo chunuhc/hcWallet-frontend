@@ -376,12 +376,9 @@ async function openManageCategoryModal() {
     .map(
       (cat) => `
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:8px; background:#f9f9f9; border-radius:8px;">
-        <div style="display:flex; align-items:center; gap:8px; cursor:pointer; flex:1;" onclick="window.editCategory('${
-          cat.id
-        }', '${cat.name}', '${cat.color_hex}')">
-          <span style="width:12px; height:12px; border-radius:50%; background:${
-            cat.color_hex
-          }"></span>
+        <div style="display:flex; align-items:center; gap:8px; cursor:pointer; flex:1;" onclick="window.editCategory('${cat.id}', '${cat.name}', '${cat.color_hex}', '${cat.icon || ""}')"  >
+        <span style="font-size:20px;">${cat.icon || "📁"}</span>
+          <span style="width:12px; height:12px; border-radius:50%; background:${cat.color_hex}"></span>
           <span>${cat.name}</span>
           <span style="font-size:0.8em; color:#999;">(點擊編輯)</span>
         </div>
@@ -401,9 +398,17 @@ async function openManageCategoryModal() {
       <div style="text-align:left; margin-bottom:16px;">
         <label style="font-weight:bold;">新增類別</label>
         <div style="display:flex; gap:8px; margin-top:8px;">
-          <input id="swal-cat-name" class="swal2-input" placeholder="名稱" style="margin:0 !important;">
-          <input id="swal-cat-color" type="color" value="#5abf98" style="height:46px; width:60px; padding:0; border:none; background:none;">
+          <input id="swal-cat-icon" class="swal2-input"
+            placeholder="ex:🍔"
+            style="margin:0 !important; width:90px; text-align:center;">
+          <input id="swal-cat-name" class="swal2-input"
+            placeholder="名稱"
+            style="margin:0 !important;">
+          <input id="swal-cat-color" type="color"
+            value="#5abf98"
+            style="height:46px; width:60px; padding:0; border:none;">
         </div>
+
       </div>
       <hr style="border:0; border-top:1px dashed #ccc; margin:16px 0;">
       <div style="text-align:left; max-height:200px; overflow-y:auto;">
@@ -418,8 +423,9 @@ async function openManageCategoryModal() {
     preConfirm: () => {
       const name = document.getElementById("swal-cat-name").value;
       const color = document.getElementById("swal-cat-color").value;
+      const icon = document.getElementById("swal-cat-icon").value.trim();
       if (!name) return null;
-      return { name, color_hex: color };
+      return { name, color_hex: color, icon: icon || "📁" };
     },
   });
 
@@ -450,12 +456,19 @@ async function openManageCategoryModal() {
 }
 
 // 編輯類別
-window.editCategory = async function (id, currentName, currentColor) {
+window.editCategory = async function (
+  id,
+  currentName,
+  currentColor,
+  currentIcon,
+) {
   const { value: updatedCat } = await Swal.fire({
     title: "編輯類別",
     html: `
       <div style="text-align:left;">
         <div style="margin-bottom:16px;">
+          <label>Icon</label>
+          <input id="edit-cat-icon" class="swal2-input" value="${currentIcon}" placeholder="ex:🍔" style="text-align:center;">
           <label>類別名稱</label>
           <input id="edit-cat-name" class="swal2-input" value="${currentName}" placeholder="名稱">
         </div>
@@ -473,6 +486,7 @@ window.editCategory = async function (id, currentName, currentColor) {
       return {
         name: document.getElementById("edit-cat-name").value,
         color_hex: document.getElementById("edit-cat-color").value,
+        icon: document.getElementById("edit-cat-icon").value || "📁",
       };
     },
   });
