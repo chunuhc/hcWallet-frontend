@@ -35,7 +35,8 @@
 }
 
 body {
-  font-family: "Zen Maru Gothic", "Varela Round", sans-serif;
+  /* font-family: "Zen Maru Gothic", "Varela Round", sans-serif; */
+  font-family: "LINE Seed JP", sans-serif;
   background: var(--primary-bg);
   background-image: none; /* 移除圖案 */
   background-size: none;
@@ -205,7 +206,9 @@ select:focus {
   font-family: inherit;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
   text-align: center;
   width: 100%;
 }
@@ -430,7 +433,9 @@ select:focus {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   border: 1px solid transparent;
 }
 
@@ -458,12 +463,15 @@ select:focus {
   color: white;
   box-shadow: none;
   text-shadow: none;
+  flex-shrink: 1;
 }
 
 .transaction-item .info {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  /* max-width: 72%; */
+  flex: 1;
 }
 
 .transaction-item .note {
@@ -487,7 +495,8 @@ select:focus {
 .transaction-item .amount {
   font-weight: 700;
   font-size: 1.2rem;
-  font-family: "Varela Round", sans-serif;
+  /* font-family: "Varela Round", sans-serif; */
+  font-family: "LINE Seed JP", sans-serif;
   letter-spacing: 0.5px;
 }
 
@@ -555,7 +564,8 @@ div:where(.swal2-container) div:where(.swal2-popup) {
   border-radius: 20px !important;
   background: var(--card-bg) !important;
   border: 1px solid var(--border-color) !important;
-  font-family: "Zen Maru Gothic", sans-serif !important;
+  /* font-family: "Zen Maru Gothic", sans-serif !important; */
+  font-family: "LINE Seed JP", sans-serif;
 }
 
 .swal-form {
@@ -602,7 +612,8 @@ div:where(.swal2-container) div:where(.swal2-popup) {
   color: var(--budget-hero-color);
   letter-spacing: 0;
   text-shadow: 2px 2px 0 rgba(160, 129, 108, 0.05);
-  font-family: "Varela Round", sans-serif;
+  /* font-family: "Varela Round", sans-serif; */
+  font-family: "LINE Seed JP", sans-serif;
   margin-bottom: 20px;
   line-height: 1;
   word-break: break-all;

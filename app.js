@@ -135,18 +135,30 @@ function renderTransactions() {
     return;
   }
 
-  // 按 ID 排序（新的在前），如果 ID 相同才按日期
+  // // 按 ID 排序（新的在前），如果 ID 相同才按日期
+  // const sorted = [...transactions].sort((a, b) => {
+  //   // 嘗試將 ID 轉為數字比較（處理 txn-timestamp 格式）
+  //   const getIdNum = (id) => {
+  //     const match = id.match(/(\d+)$/);
+  //     return match ? Number(match[1]) : 0;
+  //   };
+  //   const idDiff = getIdNum(b.id) - getIdNum(a.id);
+  //   if (idDiff !== 0) return idDiff;
+
+  //   // ID 無法比較時，按日期排序
+  //   return new Date(b.date) - new Date(a.date);
+  // });
+
+  // 改成優先按日期排序
   const sorted = [...transactions].sort((a, b) => {
-    // 嘗試將 ID 轉為數字比較（處理 txn-timestamp 格式）
+    const dateDiff = new Date(b.date) - new Date(a.date);
+    if (dateDiff !== 0) return dateDiff;
+
     const getIdNum = (id) => {
       const match = id.match(/(\d+)$/);
       return match ? Number(match[1]) : 0;
     };
-    const idDiff = getIdNum(b.id) - getIdNum(a.id);
-    if (idDiff !== 0) return idDiff;
-
-    // ID 無法比較時，按日期排序
-    return new Date(b.date) - new Date(a.date);
+    return getIdNum(b.id) - getIdNum(a.id);
   });
 
   transactionList.innerHTML = sorted
@@ -167,8 +179,8 @@ function renderTransactions() {
         <div class="right">
           <span class="amount ${txn.type}">
             ${txn.type === "income" ? "+" : "-"}${Number(
-        txn.amount
-      ).toLocaleString()}
+              txn.amount,
+            ).toLocaleString()}
           </span>
           <button class="edit-btn" onclick="window.editTransaction('${
             txn.id
@@ -178,7 +190,7 @@ function renderTransactions() {
           }')">✕</button>
         </div>
       </div>
-    `
+    `,
     )
     .join("");
 }
@@ -379,7 +391,7 @@ async function openManageCategoryModal() {
             : ""
         }
       </div>
-    `
+    `,
     )
     .join("");
 
@@ -429,7 +441,7 @@ async function openManageCategoryModal() {
       });
       await loadCategories();
       Swal.fire("成功", "類別已新增！", "success").then(() =>
-        openManageCategoryModal()
+        openManageCategoryModal(),
       );
     } catch (error) {
       Swal.fire("失敗", error.message, "error");
@@ -484,7 +496,7 @@ window.editCategory = async function (id, currentName, currentColor) {
       await loadCategories();
       // 編輯完後重新打開管理列表，方便繼續操作
       Swal.fire("成功", "類別已更新！", "success").then(() =>
-        openManageCategoryModal()
+        openManageCategoryModal(),
       );
     } catch (error) {
       Swal.fire("失敗", error.message, "error");
@@ -515,7 +527,7 @@ window.editTransaction = async function (id) {
       (cat) =>
         `<option value="${cat.id}" ${
           cat.id === txn.category_id ? "selected" : ""
-        }>${cat.name}</option>`
+        }>${cat.name}</option>`,
     )
     .join("");
 
